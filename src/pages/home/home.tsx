@@ -6,6 +6,7 @@ import { Elang, RootState } from '../../Interfaces'
 import { LangContext } from '../../providers/LangProvider/LangProvider'
 import { setLang } from '../../Redux'
 import { HomeScreenProps } from '../../types'
+import { setOpenModal } from '../../Redux/Reducers/modalReducer'
 
 const Home: React.FC<HomeScreenProps> = (props) => {
     const currentLanguage = useSelector((state: RootState) => state.setting.lang)
@@ -26,7 +27,7 @@ const Home: React.FC<HomeScreenProps> = (props) => {
                 text={'openModal'}
                 isTouchableOpacity
                 textStyle={{ color: 'red' }}
-                onPress={()=>{dispatch(setM)}}
+                onPress={()=>{dispatch(setOpenModal({name:'modalTest'}))}}
             />
         </View>
     )

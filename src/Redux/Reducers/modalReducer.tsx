@@ -16,15 +16,15 @@ const ModalReducer = createSlice({
     reducers: {
         setOpenModal: (state: IModalReducer, action) => {
             state.name = action.payload.name
-            state.data=action.payload.data
+            state.data = action.payload.data
         },
-        setCloseModal: (state: IModalReducer, action) => {
+        setCloseModal: (state: IModalReducer) => {
             state.name = ""
-            state.data=null
+            state.data = null
         },
     }
 });
 
-export const {setOpenModal,setCloseModal} = ModalReducer.actions;
+export const { setOpenModal, setCloseModal } = ModalReducer.actions;
 
 export default ModalReducer.reducer;

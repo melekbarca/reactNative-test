@@ -10,6 +10,7 @@ import LangProvider from './src/providers/LangProvider/LangProvider';
 import ThemeProvider from './src/providers/ThemeProvider/ThemeProvider';
 import { persistor, store } from './src/Redux/Store/Store';
 import Route from './src/Route/route';
+import ModalProvider from './src/providers/ModalProvider/ModalProvider';
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <PersistGate persistor={persistor}>
         <LangProvider>
           <ThemeProvider>
+            <ModalProvider/>
             <Route />
           </ThemeProvider>
         </LangProvider>

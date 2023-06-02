@@ -1,7 +1,7 @@
-import React, { Ref, useImperativeHandle, useState } from 'react'
-import { Modal as ModalReactNative, View } from 'react-native'
+import React, { Ref, useEffect, useImperativeHandle, useState } from 'react'
+import { Modal as ModalReactNative, Text, View } from 'react-native'
 import { ModalStyle } from '../../assets/components'
-import Text from '../../atoms/Text/Text'
+
 import { Button } from '../../atoms'
 
 export type RefType = {
@@ -15,12 +15,11 @@ const Modal = React.forwardRef((props: any, ref: Ref<RefType | undefined>) => {
 
     const [open, setOpen] = useState<boolean>(false)
 
-    useImperativeHandle(ref, () => {
-        return {
-            onOpen,
-            onClose
-        }
-    }, [])
+
+    useImperativeHandle(ref, () => ({
+        onClose,
+        onOpen,
+    }));
 
 
     const onOpen = () => {
@@ -31,13 +30,20 @@ const Modal = React.forwardRef((props: any, ref: Ref<RefType | undefined>) => {
         setOpen(false)
     }
 
+    useEffect(() => {
+
+        if (!open) {
+            if (props.onExit) props.onExit()
+        }
+
+    }, [open])
+
     return (
         <ModalReactNative
             animationType={props.animationType}
             transparent={true}
             visible={open}
             onRequestClose={onClose}
-            onShow={props.onShow}
             style={props.style}
         >
             <View style={ModalStyle.modalContainer}>
@@ -46,6 +52,7 @@ const Modal = React.forwardRef((props: any, ref: Ref<RefType | undefined>) => {
                     <Button
                         onPress={onClose}
                         text='close'
+                
                     />
                 </View>
             </View >
@@ -54,3 +61,4 @@ const Modal = React.forwardRef((props: any, ref: Ref<RefType | undefined>) => {
         </ModalReactNative>
     )
 })
+export default Modal

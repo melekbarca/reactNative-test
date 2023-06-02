@@ -1,15 +1,19 @@
 import React, { Ref, forwardRef } from 'react'
 import { View } from 'react-native'
-import { RefType } from '../Interfaces'
-import { Modal } from '../Molecules'
+import { RefType } from '../molecules/Modal/Modal'
+import Modal from '../molecules/Modal/Modal'
+import Text from '../atoms/Text/Text'
+import { ModalStyle } from '../assets/components'
 
-import { ModalStyle } from '../Assets/components'
 
-function ModalTest(props: any, ref: Ref<RefType | undefined>) {
+
+
+function ModalTest1(props: any, ref: Ref<RefType | undefined>) {
     const btnSubmitProps = {
         onPress: ()=>{props.onExit()},
         
     }
+    
     return (
         <Modal
             ref={ref}
@@ -25,9 +29,9 @@ function ModalTest(props: any, ref: Ref<RefType | undefined>) {
             }}
             btnSubmitProps= {btnSubmitProps}
         >
-            <View><Text>ModalTestttttttttttttttttttttttttttttttttt</Text></View>
+            <View><Text>ModalTestttttttttt</Text></View>
 
         </Modal>
     )
 }
-export default forwardRef(ModalTest)
+export default forwardRef(ModalTest1)
