@@ -13,7 +13,7 @@ export default function Button({ type, ...props }: IButton): JSX.Element {
     if (type) {
         switch (type) {
             case 'primary':
-                containerClassName = ButtonStyle(theme.themeColor, 50, 100, 20).btnType
+                containerClassName = ButtonStyle(theme.themeColor, 50, 100, 10).btnType
                 break;
             case 'secondary':
                 containerClassName = ButtonStyle(theme.commonWhite, 50, 100, 20).btnType
